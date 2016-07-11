@@ -186,6 +186,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.0)
+  rake
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)

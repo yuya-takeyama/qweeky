@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.3.1
+
+dependencies:
+  pre:
+    - cd server && bundle install
+
+test:
+  override:
+    - ./run-tests.sh
