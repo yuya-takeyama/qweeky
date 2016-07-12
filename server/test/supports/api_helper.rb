@@ -1,6 +1,5 @@
 module ApiHelper
   include Rack::Test::Methods
-  include FactoryGirl::Syntax::Methods
 
   attr_reader :current_user, :current_access_token
 

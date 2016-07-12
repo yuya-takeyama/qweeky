@@ -11,6 +11,10 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'test-unit-rails'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
