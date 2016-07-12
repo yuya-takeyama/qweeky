@@ -21,6 +21,10 @@ class PageTest < BaseTestCase
         assert { build(:page, path: '/a..b').invalid? }
         assert { build(:page, path: '/a.md').invalid? }
         assert { build(:page, path: '/*').invalid? }
+        assert { build(:page, path: '/.').invalid? }
+        assert { build(:page, path: '/./.').invalid? }
+        assert { build(:page, path: '/a.').invalid? }
+        assert { build(:page, path: '/.a').invalid? }
       end
     end
   end
