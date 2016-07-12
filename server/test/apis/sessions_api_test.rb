@@ -1,13 +1,5 @@
-class SessionsApiTest < Test::Unit::TestCase
+class SessionsApiTest < BaseTestCase
   include ApiHelper
-
-  setup do
-    DatabaseRewinder.clean_all
-  end
-
-  teardown do
-    DatabaseRewinder.clean
-  end
 
   sub_test_case 'POST /api/login' do
     setup do
