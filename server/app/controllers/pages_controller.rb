@@ -1,30 +1,31 @@
 class PagesController < ApplicationController
   # GET /pages/*path
   def show
-    set_page
+    page = Page.find_by(path: "/#{params[:path]}")
 
-    render json: @page
+    if page
+      render status: :ok,
+        json: {
+          content: page.revisions.last.content,
+        }
+    else
+      render status: :not_found,
+        json: {
+          error: 'Not found',
+        }
+    end
   end
 
   # PATCH/PUT /pages/*path
   def update
-    set_page
-
-    if @page.update(page_params)
-      render json: @page
-    else
-      render json: @page.errors, status: :unprocessable_entity
+    ApplicationRecord.transaction do
+      @page = Page.find_or_create_by!(path: "/#{params[:path]}")
+      @page.revisions.create!(user: current_user, content: params[:content])
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
     def page_params
-      params.require(:page).permit(:path)
+      params.require(:page).permit(:content)
     end
 end
