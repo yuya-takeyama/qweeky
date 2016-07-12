@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
           access_token: {token: access_token.token},
         }
     else
-      render status: :aunothorized,
+      render status: :unauthorized,
         json: {error: 'Credentials did not match'}
     end
   end

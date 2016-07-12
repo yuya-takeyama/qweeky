@@ -7,6 +7,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sorcery'
 
 group :development, :test do
+  gem 'rake'
   gem 'byebug', platform: :mri
   gem 'test-unit-rails'
   gem 'factory_girl_rails'
@@ -16,4 +17,8 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'database_rewinder'
 end
