@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  post 'login'  => 'sessions#login'
-  post 'logout' => 'sessions#logout'
+  scope path: '/api' do
+    post 'login'  => 'sessions#login'
+    post 'logout' => 'sessions#logout'
 
-  resources :users
+    resources :users
+  end
 end
